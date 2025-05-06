@@ -17,7 +17,7 @@ const Add = ({
 
   // // TEMPORARY
   // const stock = 4;
-
+  console.log(stockNumber);
   const handleQuantity = (type: "i" | "d") => {
     if (type === "d" && quantity > 1) {
       setQuantity((prev) => prev - 1);
@@ -40,7 +40,7 @@ const Add = ({
             <button
               className="cursor-pointer text-xl disabled:cursor-not-allowed disabled:opacity-20"
               onClick={() => handleQuantity("d")}
-              disabled={quantity===1}
+              disabled={quantity === 1}
             >
               -
             </button>
@@ -48,7 +48,7 @@ const Add = ({
             <button
               className="cursor-pointer text-xl disabled:cursor-not-allowed disabled:opacity-20"
               onClick={() => handleQuantity("i")}
-              disabled={quantity===stockNumber}
+              disabled={quantity === stockNumber}
             >
               +
             </button>

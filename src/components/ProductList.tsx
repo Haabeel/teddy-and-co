@@ -24,7 +24,7 @@ const ProductList = async ({
     .eq("collectionIds", categoryId)
     .hasSome(
       "productType",
-      searchParams?.type ? [searchParams.type] : ["physical", "digital"]
+      searchParams?.type ? [searchParams.type] : ["physical", "digital"],
     )
     .gt("priceData.price", searchParams?.min || 0)
     .lt("priceData.price", searchParams?.max || 999999)
@@ -32,7 +32,7 @@ const ProductList = async ({
     .skip(
       searchParams?.page
         ? parseInt(searchParams.page) * (limit || PRODUCT_PER_PAGE)
-        : 0
+        : 0,
     );
   // .find();
 
@@ -50,7 +50,7 @@ const ProductList = async ({
   const res = await productQuery.find();
 
   return (
-    <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
+    <div className="mt-12 flex gap-x-5 gap-y-16 flex-wrap">
       {res.items.map((product: products.Product) => (
         <Link
           href={"/" + product.slug}
@@ -77,7 +77,7 @@ const ProductList = async ({
           </div>
           <div className="flex justify-between">
             <span className="font-medium">{product.name}</span>
-            <span className="font-semibold">${product.price?.price}</span>
+            <span className="font-semibold">AED {product.price?.price}</span>
           </div>
           {product.additionalInfoSections && (
             <div
@@ -85,8 +85,8 @@ const ProductList = async ({
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(
                   product.additionalInfoSections.find(
-                    (section: any) => section.title === "shortDesc"
-                  )?.description || ""
+                    (section: any) => section.title === "shortDesc",
+                  )?.description || "",
                 ),
               }}
             ></div>

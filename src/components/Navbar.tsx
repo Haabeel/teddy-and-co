@@ -3,7 +3,7 @@ import Menu from "./Menu";
 import Image from "next/image";
 import SearchBar from "./SearchBar";
 import dynamic from "next/dynamic";
-// import NavIcons from "./NavIcons";
+import { PawPrint } from "lucide-react";
 
 const NavIcons = dynamic(() => import("./NavIcons"), { ssr: false });
 
@@ -13,7 +13,7 @@ const Navbar = () => {
       {/* MOBILE */}
       <div className="h-full flex items-center justify-between md:hidden">
         <Link href="/">
-          <div className="text-2xl tracking-wide">LAMA</div>
+          <div className="text-2xl tracking-wide">TEDDY & CO.</div>
         </Link>
         <Menu />
       </div>
@@ -22,15 +22,13 @@ const Navbar = () => {
         {/* LEFT */}
         <div className="w-1/3 xl:w-1/2 flex items-center gap-12">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo.png" alt="" width={24} height={24} />
-            <div className="text-2xl tracking-wide">LAMA</div>
+            <PawPrint />
+            <div className="text-lg tracking-wide">TEDDY & CO.</div>
           </Link>
           <div className="hidden xl:flex gap-4">
             <Link href="/">Homepage</Link>
-            <Link href="/">Shop</Link>
-            <Link href="/">Deals</Link>
-            <Link href="/">About</Link>
-            <Link href="/">Contact</Link>
+            <Link href="#cat">Shop</Link>
+            <Link href="#contact">Contact</Link>
           </div>
         </div>
         {/* RIGHT */}

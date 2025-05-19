@@ -5,6 +5,7 @@ import { useWixClient } from "@/hooks/useWixClient";
 import { useState } from "react";
 
 const Add = ({
+  disabled,
   productId,
   variantId,
   stockNumber,
@@ -12,6 +13,7 @@ const Add = ({
   productId: string;
   variantId: string;
   stockNumber: number;
+  disabled?: boolean;
 }) => {
   const [quantity, setQuantity] = useState(1);
 
@@ -64,8 +66,11 @@ const Add = ({
           )}
         </div>
         <button
-          onClick={() => addItem(wixClient, productId, variantId, quantity)}
-          disabled={isLoading}
+          onClick={() => {
+            addItem(wixClient, productId, variantId, quantity);
+            console.log(productId, variantId, quantity);
+          }}
+          disabled={disabled || isLoading}
           className="w-36 text-sm rounded-3xl ring-1 ring-lama text-lama py-2 px-4 hover:bg-lama hover:text-white disabled:cursor-not-allowed disabled:bg-pink-200 disabled:ring-0 disabled:text-white disabled:ring-none"
         >
           Add to Cart
